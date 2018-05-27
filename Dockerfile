@@ -18,3 +18,8 @@ RUN \
 
 CMD /bin/bash -c /startup.sh
 
+VOLUME /root/.config/SpiderOakONE/
+VOLUME /home/user/.config/SpiderOakONE/
+VOLUME /root/SpiderOak Hive/
+VOLUME /home/user/SpiderOak Hive/
+
