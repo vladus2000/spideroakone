@@ -10,3 +10,7 @@ or
 
 runs as root unless PUID is set
 
+set PURGE to all (or any option --purge-historical-versions takes) to remove historical versions on startup
+
+set DELETE to 7 (or any option --purge-deleted-items takes) to remove deleted items on startup
+
