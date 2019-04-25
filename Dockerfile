@@ -1,22 +1,17 @@
-FROM vladus2000/ubuntu-base
+FROM vladus2000/alpine-base-glibc-user
 MAINTAINER vladus2000 <docker@matt.land>
 
 COPY shiz/ /
 
-RUN \
-	apt-get update && \
-	apt-get -y dist-upgrade && \
-	apt-get -y install gnupg && \
-	echo deb http://APT.spideroak.com/ubuntu-spideroak-hardy/ release restricted > /etc/apt/sources.list.d/spideroakone.list && \
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 573E3D1C51AE1B3D && \
-	apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::=--force-confnew install spideroakone && \
-	apt-get -y purge gnupg && \
-	apt-get -y autoremove && \
-	apt-get clean && \
-	chmod +x /startup.sh
+ENV STARTUP_CMD="/runuserorroot.sh SpiderOakONE --headless;sleep 1h"
 
-CMD /bin/bash -c /startup.sh
+RUN \
+        /update.sh && \
+	wget https://spideroak.com/release/spideroak/slack_tar_x64 && \
+	tar zxvf slack_tar_x64 && \
+	rm -f slack_tar_x64
+
+CMD /bin/ash -c /startup.sh
 
 VOLUME /root/.config/SpiderOakONE/
 VOLUME /home/user/.config/SpiderOakONE/
