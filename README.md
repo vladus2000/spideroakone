@@ -1,6 +1,6 @@
-# spideroakone
+# spideroakone-alpine
 
-After creating, run a new bash session and run:
+After creating, run a new ash session and run:
 /spider --setup=-
 
 You might want the following volumes mounted:

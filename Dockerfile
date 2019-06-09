@@ -3,7 +3,7 @@ MAINTAINER vladus2000 <docker@matt.land>
 
 COPY shiz/ /
 
-ENV STARTUP_CMD="/runuserorroot.sh SpiderOakONE --headless;sleep 1h"
+ENV STARTUP_CMD="/runuserorroot.sh SpiderOakONE --headless"
 
 RUN \
         /update.sh && \
